@@ -147,22 +147,7 @@ public class GameActivity extends AppCompatActivity {
             }
         }
 
-//        if (intent.getStringExtra("ROOMNAME") != null) {
-//            ROOM_NAME = intent.getStringExtra("ROOMNAME");
-//            logDatabase = FirebaseDatabase.getInstance().getReference("omokRoom/" + ROOM_NAME + "/gamelog");
-//            RoomDatabase = FirebaseDatabase.getInstance().getReference("omokRoom/" + ROOM_NAME + "/gameinfo");
-//            myColor = "white";
-//            yourPart.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.yellow));
-//            your_Message.setText("상대가 돌을 놓는 중입니다...");
-//        }
-//        if (intent.getStringExtra("createRoomName") != null) {
-//            CREATE_ROOM_NAME = intent.getStringExtra("createRoomName");
-//            logDatabase = FirebaseDatabase.getInstance().getReference("omokRoom/" + CREATE_ROOM_NAME + "/gamelog");
-//            RoomDatabase = FirebaseDatabase.getInstance().getReference("omokRoom/" + CREATE_ROOM_NAME + "/gameinfo");
-//            myColor = "black";
-//            myPart.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.yellow));
-//            my_Message.setText("당신이 돌을 놓을 차례입니다.");
-//        }
+
 
         // 게임 시작 정보 변경 감지
         RoomDatabase.addValueEventListener(new ValueEventListener() {
@@ -212,7 +197,7 @@ public class GameActivity extends AppCompatActivity {
                 // 돌을 놓을 때 UI 변경
                 setUserUI(myID, who_Stone);
                 //승리 체크
-                checkisWin(isWin);
+                checkisWin(isWin, myID, who_Stone);
             }
 
             @Override
@@ -273,21 +258,21 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    private void checkisWin(boolean isWin) {
+    private void checkisWin(boolean isWin, String myID, String who_Stone) {
         if (isWin == true) {
-            if (yourID == myID) {
+            my_Message.setText("경기 끝!");
+            your_Message.setText("경기 끝!");
+            if (who_Stone == myID) {
                 FragmentView(Fragment_1);
             } else {
                 FragmentView(Fragment_2);
             }
-            my_Message.setText("경기 끝!");
-            your_Message.setText("경기 끝!");
-//            new Handler().postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    finish();
-//                }
-//            }, 5000);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    finish();
+                }
+            }, 3000);
         }
     }
 
