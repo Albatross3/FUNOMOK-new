@@ -1,5 +1,10 @@
 # 신의 한수 the 오목
 자신의 계정을 이용해 어플 내 사용자와 PvP 대전이 가능한 오목 어플리케이션입니다
+
+
+<img src="https://github.com/Albatross3/FUNOMOK-new/blob/main/Screenshot/splash.png" width=30% height=30%>
+
+
 ## ⭐ 핵심 기능 
 ### 주요 기능
 * 실시간 2인 PvP 대전 
